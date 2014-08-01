@@ -12,8 +12,8 @@ module Chester
       @board = board
     end
 
-    def go(move)
-      move = interpret(move)
+    def go(move) #instance of Move
+      interpret!(move)
       if valid?(move)
         execute_move(move)
       end
