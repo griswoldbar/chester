@@ -5,7 +5,13 @@ module Chester
     end
 
     def run(instruction)
+      return instruction unless cromulent?(instruction)
       "ran: #{instruction}"
+    end
+
+    private
+    def cromulent?(instruction)
+      !instruction.is_a?(Chester::InterpreterError)
     end
   end
 end

@@ -7,8 +7,19 @@ module Chester
     end
 
     def interpret(raw_input)
+      begin
+        if is_admin?(raw_input)
+          admin_interpreter.interpret(raw_input.sub("chester:","").strip)
+        else
+          move_interpreter.interpret(raw_input)
+        end
+      rescue Chester::InterpreterError => e
+        return e
+      end
+    end
 
-      return "interpreted: #{raw_input}"
+    def is_admin?(raw_input)
+      raw_input.match(/^chester: /)
     end
   end
 end

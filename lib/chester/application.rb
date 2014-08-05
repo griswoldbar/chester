@@ -10,15 +10,5 @@ module Chester
       output_handler.handle(output)
     end
 
-    # private
-    # def execute(instruction)
-    #   case instruction.class.name
-    #   when "Move"
-    #     move_processor.handle(instruction)
-    #   when "Admin"
-    #     admin_processor.handle(instruction)
-    #   end
-    # end
-
   end
 end
