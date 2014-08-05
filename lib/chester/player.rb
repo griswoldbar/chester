@@ -1,5 +1,5 @@
 module Chester
-  class King < BasePiece
+  class Player
 
   end
 end

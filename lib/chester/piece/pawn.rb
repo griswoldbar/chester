@@ -1,5 +1,5 @@
 module Chester
-  class Pawn < BasePiece
+  class Pawn < Piece
 
   end
 end

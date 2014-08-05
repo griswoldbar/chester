@@ -1,5 +1,5 @@
 module Chester
-  class Rook < BasePiece
+  class Knight < Piece
 
   end
 end

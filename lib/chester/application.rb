@@ -2,7 +2,9 @@ module Chester
   class Application
     attr_accessor :input_interpreter,
                   :command_runner,
-                  :output_handler
+                  :output_handler,
+                  :game_state
+
 
     def handle(input)
       instruction = input_interpreter.interpret(input)
