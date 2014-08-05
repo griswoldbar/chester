@@ -3,7 +3,7 @@ module Chester
     attr_accessor :input_interpreter,
                   :command_runner,
                   :output_handler,
-                  :game_state
+                  :game
 
 
     def handle(input)
