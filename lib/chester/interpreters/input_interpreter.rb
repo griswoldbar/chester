@@ -8,8 +8,8 @@ module Chester
 
     def interpret(raw_input)
       begin
-        if is_admin?(raw_input)
-          admin_interpreter.interpret(raw_input.sub("chester:","").strip)
+        if is_admin?(raw_input[:body])
+          admin_interpreter.interpret(raw_input)
         else
           move_interpreter.interpret(raw_input)
         end

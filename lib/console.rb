@@ -2,8 +2,11 @@ require 'chester/application_builder'
 require 'chester/interpreters/move_interpreter'
 require 'chester/interpreters/input_interpreter'
 require 'chester/interpreters/admin_interpreter'
-require 'chester/command_runner'
-require 'chester/output_handler'
+require 'chester/runners/command_runner'
+require 'chester/runners/move_runner'
+require 'chester/output/output_handler'
+require 'chester/output/ascii_displayer'
+
 require 'chester/application'
 require 'chester/game'
 # require 'chester/board'
@@ -20,11 +23,13 @@ module Chester
         end
 
 
-        app.command_runner = CommandRunner.build do |i|
-
+        app.command_runner = CommandRunner.build do |c|
+          c.move_runner = MoveRunner
         end
 
-        app.output_handler = OutputHandler.new
+        app.output_handler = OutputHandler.build do |o|
+          o.outputter = AsciiDisplayer
+        end
 
         app.input_interpreter = InputInterpreter.build do |i|
           i.move_interpreter = MoveInterpreter.new
