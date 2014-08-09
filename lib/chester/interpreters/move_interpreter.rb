@@ -7,32 +7,33 @@ module Chester
       interpretation = input[:body].match(VALID_MOVE)
       raise Chester::InterpreterError, "I don't understand: #{input[:body]}" unless interpretation
       
-      move = {
+      instruction = {
         type: :move,
         player: input[:player],
-        move_type: get_move_type(interpretation),
+        move: build_move(interpretation)
       }
-      if move[:move_type] == :regular
-        move.merge!(
-          piece: get_piece(interpretation[:piece]),
-          source_file: get_file(interpretation[:source_file]),
-          source_rank: interpretation[:source_rank].to_i,
-          target_file: get_file(interpretation[:target_file]),
-          target_rank: interpretation[:target_rank].to_i,
-          queening_piece: get_piece(interpretation[:queening_piece])
-        )
-      end
-      
-      move
     end
     
     private
+    def build_move(interpretation)
+      {
+        type: get_move_type(interpretation),
+        piece: get_piece(interpretation[:piece]),
+        source_file: get_file(interpretation[:source_file]),
+        source_rank: interpretation[:source_rank] &&  interpretation[:source_rank].to_i,
+        target_file: get_file(interpretation[:target_file]),
+        target_rank: interpretation[:target_rank].to_i,
+        queening_piece: get_piece(interpretation[:queening_piece])
+      }
+    end
   
     def get_move_type(move)
       if move[:queen_castle]
         :queen_side_castle
       elsif move[:castle]
         :king_side_castle
+      elsif move[:queening_piece]
+        :queening
       else
         :regular
       end

@@ -6,12 +6,14 @@ module Chester
     
     def initialize(game,message)
       @game = game
+      @board = @game.board
       @message = message
     end
     
     def display
       output = "|"+ ("-"*multiplier) + "|\n"
       output << print_board(@game.board)
+      puts output
     end
     
     private
@@ -32,8 +34,9 @@ module Chester
     end
     
     def print_square(square)
+      piece = @board.find_piece_by_square(square)
       output = "|       "
-      output << "|   " + print_piece(square.piece) + "   "
+      output << "|   " + print_piece(piece) + "   "
       output << "|       "
       output.gsub!(" ", "#") if square.black?
       output.gsub!(/#(\w)#/,' \1 ')

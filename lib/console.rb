@@ -6,20 +6,24 @@ require 'chester/runners/command_runner'
 require 'chester/runners/move_runner'
 require 'chester/output/output_handler'
 require 'chester/output/ascii_displayer'
-
+require 'chester/executor'
 require 'chester/application'
 require 'chester/game'
-# require 'chester/board'
 require 'chester/player'
 require 'chester/game_state'
 
 module Chester
   module Console
+    def test(raw_move="e4", player=:white)
+      app.handle({body: raw_move, player: player})
+    end    
+    
     def app
       @app ||= ApplicationBuilder.build(Application) do |app|
         app.game = Game.build do |g|
           g.players = [Player.new, Player.new]
           g.game_state = GameState.load(game_hash)
+          g.executor = Executor.new(g)
         end
 
 

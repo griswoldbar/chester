@@ -13,8 +13,8 @@ module Chester
     #}
     def handle(input)
       instruction = input_interpreter.interpret(input)
-      output = command_runner.run(game, instruction)
-      output_handler.handle(game, output)
+      output_message = command_runner.run(game, instruction)
+      output_handler.handle(game, output_message)
     end
     
     def display
