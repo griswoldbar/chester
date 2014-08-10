@@ -14,6 +14,7 @@ module Chester
       #   dead_piece = target.piece
       #   message = "#{piece.type.to_s} takes #{dead_piece.type.to_s}"
       # end
+      @game.next_player
       message
     end
   end

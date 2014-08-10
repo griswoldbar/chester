@@ -1,6 +1,7 @@
 require 'chester/board'
 require 'chester/square'
 require 'chester/pieces/piece_factory'
+require 'chester/util/util'
 module Chester
   class GameState
     attr_accessor :board, :current_player
@@ -15,6 +16,10 @@ module Chester
         gs.board = Chester::Board.new(mapping)
         gs.current_player = hash[:current_player]
       }
+    end
+    
+    def switch_players
+      @current_player = Util.binary_flip(@current_player)
     end
   end
 end

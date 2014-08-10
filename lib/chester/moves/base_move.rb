@@ -11,10 +11,12 @@ module Chester
     end
 
     def run
-      disambiguate
-      if (unambiguous? && valid?)
-        execute
-        post_process
+      if correct_player?
+        disambiguate
+        if (unambiguous? && valid?)
+          execute
+          post_process
+        end
       end
       output_message
     end
@@ -39,11 +41,19 @@ module Chester
       !@invalid
     end
     
+    def correct_player?
+      @correct_player ||= begin
+        @game.current_player?(@player)
+      end
+    end
+    
     def output_message
-      if !unambiguous?
-        "ambiguous move"
+      if !correct_player?
+        :wrong_player
+      elsif !unambiguous?
+        :ambiguous
       elsif !valid?
-        "invalid move"
+        :invalid
       else
         @output_message
       end

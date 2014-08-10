@@ -19,8 +19,6 @@ module Chester
       true
     end
 
-these are different depending on if black or white...
-
     def check_double_step
       (@y == 2) && 
       (@board[@x, @y+2] == @target)

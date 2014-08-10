@@ -54,7 +54,7 @@ module Chester
           71 => 'BP', 72 => 'BP', 73 => 'BP', 74 => 'BP', 75 => 'BP', 76 => 'BP', 77 => 'BP', 78 => 'BP',
           81 => 'BR', 82 => 'BN', 83 => 'BB', 84 => 'BQ', 85 => 'BK', 86 => 'BB', 87 => 'BN', 88 => 'BR'
         },
-        :current_player => 1
+        :current_player => 0
       }
     end
   end

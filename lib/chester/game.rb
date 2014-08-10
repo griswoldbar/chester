@@ -10,8 +10,16 @@ module Chester
       game_state.board
     end
     
+    def current_player?(player)
+      player == current_player
+    end
+    
+    def next_player
+      game_state.switch_players
+    end
+    
     def current_player
-      game_state.current_player
+      {0 => :white, 1 => :black}[game_state.current_player]
     end
     
     def execute(move, piece)
