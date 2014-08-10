@@ -1,6 +1,6 @@
 module Chester
   class BaseMove
-    attr_reader :game, :board
+    attr_reader :game, :board, :player
        
     def initialize(game, player, move, validator_factory)
       @move = move

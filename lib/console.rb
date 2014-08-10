@@ -14,7 +14,7 @@ require 'chester/game_state'
 
 module Chester
   module Console
-    def test(raw_move="e4", player=:white)
+    def test(raw_move="e4", player=app.game.current_player)
       app.handle({body: raw_move, player: player})
     end    
     
