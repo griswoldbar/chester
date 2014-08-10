@@ -1,4 +1,5 @@
 require 'chester/validators/pawn_move_validator'
+require 'chester/validators/knight_move_validator'
 
 module Chester
   module Validator
@@ -9,6 +10,8 @@ module Chester
         case piece.type
         when :pawn
           PawnMoveValidator.new(move, piece)
+        when :knight
+          KnightMoveValidator.new(move, piece)
         end
       end
     end

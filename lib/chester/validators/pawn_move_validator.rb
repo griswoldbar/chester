@@ -14,10 +14,6 @@ module Chester
         return false
       end
     end
-    
-    def non_self_checking?
-      true
-    end
 
     def check_double_step
       (@y == 2) && 

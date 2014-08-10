@@ -17,6 +17,8 @@ module Chester
     
     private
     def doable?;end
-    def non_self_checking?;end
+    def non_self_checking?
+      true
+    end
   end
 end
