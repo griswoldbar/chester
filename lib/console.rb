@@ -26,7 +26,6 @@ module Chester
           g.executor = Executor.new(g)
         end
 
-
         app.command_runner = CommandRunner.build do |c|
           c.move_runner = MoveRunner
         end
