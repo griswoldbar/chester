@@ -6,6 +6,43 @@ require 'chester/pieces/knight'
 require 'chester/pieces/bishop'
 
 module Chester
+  module PieceFactoryTwo
+    extend self
+    def build(char)
+      return nil if char == "x"
+
+      colour = get_colour(char)
+      klass = get_class(char)
+      klass.new(colour)
+    end
+
+    private
+    def get_class(char)
+      case char.upcase
+      when "P"
+        Pawn
+      when "K"
+        King
+      when "Q"
+        Queen
+      when "R"
+        Rook
+      when "N"
+        Knight
+      when "B"
+        Bishop
+      end
+    end
+
+    def get_colour(char)
+      if char.match(/[a-z]/)
+        :black
+      else
+        :white
+      end
+    end
+
+  end
   module PieceFactory
     extend self
     def build(string)
