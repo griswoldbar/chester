@@ -15,10 +15,11 @@ module Chester
     end
 
     def self.handle_board_string(str)
+      str.reverse!
       str.gsub!("\n", "")
       str.gsub!(" ", "")
       str.split("").each_slice(8).each_with_index.inject({}) do |memo,(row,y)|
-        row.each_with_index do |char, x|
+        row.reverse.each_with_index do |char, x|
           memo.merge!(Square.new(x+1,y+1) => PieceFactoryTwo.build(char))
         end
         memo
